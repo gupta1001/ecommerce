@@ -38,6 +38,6 @@ This repository contains a production-grade RESTful API for a simple e-commerce 
    ```bash
    docker-compose up --build
 
-2. **Accessing the APIs via swagger
+2. **Accessing the APIs via swagger:**
     - Open a web browser and navigate to http://localhost:8000/docs
     - You can now interact with the API endpoints via the Swagger UI
