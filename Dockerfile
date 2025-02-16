@@ -1,5 +1,5 @@
 # Dockerfile
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 # Set environment variables for production
 ENV PYTHONDONTWRITEBYTECODE=1

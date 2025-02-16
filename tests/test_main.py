@@ -10,7 +10,7 @@ async def clear_db():
     await db.orders.delete_many({})
     yield
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio(scope="session")
 async def test_create_and_get_product():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         # Create a new product
@@ -32,7 +32,7 @@ async def test_create_and_get_product():
         assert len(products) == 1
         assert products[0]["name"] == product_payload["name"]
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio(scope="session")
 async def test_place_order_success():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         # Create two products
@@ -57,7 +57,7 @@ async def test_place_order_success():
         assert order_data["total_price"] == expected_total
         assert order_data["status"] == "completed"
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio(scope="session")
 async def test_place_order_insufficient_stock():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         # Create a product with limited stock
